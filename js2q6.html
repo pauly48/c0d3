@@ -1,0 +1,27 @@
+<input class="input1" type="number">
+<button class="start">Start</button>
+<h1 class="display"></h1>
+
+<script>
+    const input1 = document.querySelector('.input1')
+    const startB = document.querySelector('.start')
+    const display = document.querySelector('.display')
+
+    const isPrime = (num, i = 2,) => {
+  if (num < 2) return false
+  if (num === i) return true
+  if (num % i === 0) return false
+  return isPrime(num, i + 1)
+    }
+    const printAllPrimes = (num, i = 2, result = '') => {
+  if (num < i) return result
+  if (isPrime(i)) result = `${result}${i}...`
+  return printAllPrimes(num, i + 1, result)
+    }
+
+    startB.onclick = () => {
+        const input1V = +input1.value
+        if (input1V < 2) return alert('Please Enter a value greater than 1')
+        display.innerText = printAllPrimes(input1V)
+    }
+</script>
